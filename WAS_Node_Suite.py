@@ -7297,8 +7297,8 @@ class WAS_Image_Save:
             },
         }
 
-    RETURN_TYPES = ("IMAGE",)
-    RETURN_NAMES = ("images",)
+    RETURN_TYPES = ("IMAGE","STRING")
+    RETURN_NAMES = ("images","path")
 
     FUNCTION = "was_save_images"
 
@@ -7495,9 +7495,9 @@ class WAS_Image_Save:
                 results.append(image_data)
 
         if show_previews == 'true':
-            return {"ui": {"images": results}, "result": (images,)}
+            return {"ui": {"images": results}, "result": (images, file)}
         else:
-            return {"ui": {"images": []}, "result": (images,)}
+            return {"ui": {"images": []}, "result": (images, file)}
 
     def get_subfolder_path(self, image_path, output_path):
         output_parts = output_path.strip(os.sep).split(os.sep)
